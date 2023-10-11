@@ -1,6 +1,8 @@
 package com.server.dosopt.seminar.controller;
 
 import com.server.dosopt.seminar.dto.HealthCheckResponse;
+import com.server.dosopt.seminar.dto.HttpResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,5 +42,10 @@ public class HealthCheckController {
     @GetMapping("/v5")
     public ResponseEntity<HealthCheckResponse> healthCheckV5() {
         return ResponseEntity.ok(new HealthCheckResponse());
+    }
+
+    @GetMapping("/v6")
+    public HttpResponse healthCheckV6() {
+        return new HttpResponse(HttpStatus.OK,true);
     }
 }
