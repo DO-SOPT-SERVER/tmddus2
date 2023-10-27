@@ -39,4 +39,10 @@ public class MemberController {
         URI location = URI.create("api/member/"+memberService.create(request));
         return ResponseEntity.created(location).build();
     }
+
+    @DeleteMapping("/{memberId}")
+    public ResponseEntity<Void> deleteMember(@PathVariable Long memberId) {
+        memberService.delete(memberId);
+        return ResponseEntity.ok().build();
+    }
 }

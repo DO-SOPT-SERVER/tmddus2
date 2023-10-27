@@ -11,4 +11,6 @@ public interface MemberJpaRepository extends JpaRepository<Member, Long> {
                 () -> new EntityNotFoundException("존재하지 않는 회원입니다."));
     }
 
+    @Override
+    void deleteById(Long id);
 }

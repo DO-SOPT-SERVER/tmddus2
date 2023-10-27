@@ -48,6 +48,12 @@ public class MemberService {
         return memberJpaRepository.save(member).getId().toString();
     }
 
+    @Transactional
+    public void delete(Long memberId) {
+        System.out.println("memberId = " + memberId);
+        memberJpaRepository.deleteById(memberId);
+    }
+
     private Member findById(Long memberId) {
         return memberJpaRepository.findById(memberId).orElseThrow(
                 () -> new EntityNotFoundException("해당하는 회원이 없습니다.")
