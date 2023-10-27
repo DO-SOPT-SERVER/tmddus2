@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,17 +23,17 @@ public class MemberService {
 
     public MemberGetResponse getByIdV1(Long memberId) {
         Member member = memberJpaRepository.findById(memberId).get();
-        return MemberGetResponse.of(member);
+        return new MemberGetResponse(member);
     }
 
     public MemberGetResponse getByIdV2(Long memberId) {
-        return MemberGetResponse.of(memberJpaRepository.findByIdOrThrow(memberId));
+        return new MemberGetResponse(memberJpaRepository.findByIdOrThrow(memberId));
     }
 
     public List<MemberGetResponse> getMembers() {
         return memberJpaRepository.findAll()
             .stream()
-            .map(MemberGetResponse::of)
+            .map(member -> new MemberGetResponse(member))
             .collect(Collectors.toList());
     }
 
