@@ -25,7 +25,7 @@ bin/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-
+week2/src/main/resources/application.yml
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
