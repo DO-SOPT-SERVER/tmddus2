@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -50,7 +49,6 @@ public class MemberService {
 
     @Transactional
     public void delete(Long memberId) {
-        System.out.println("memberId = " + memberId);
         memberJpaRepository.deleteById(memberId);
     }
 
