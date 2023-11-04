@@ -35,3 +35,7 @@ week2_refactor/src/main/resources/application.yml
 
 ### VS Code ###
 .vscode/
+
+**/src/main/resources/application.yml
+**/src/main/resources/application-dev.yml
+
