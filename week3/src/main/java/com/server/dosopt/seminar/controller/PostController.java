@@ -1,6 +1,7 @@
 package com.server.dosopt.seminar.controller;
 
 import com.server.dosopt.seminar.dto.request.post.PostCreateRequest;
+import com.server.dosopt.seminar.dto.request.post.PostUpdateRequest;
 import com.server.dosopt.seminar.dto.response.post.PostGetResponse;
 import com.server.dosopt.seminar.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -34,5 +35,18 @@ public class PostController {
         String postId = postService.create(request, memberId);
         URI location = URI.create("/api/posts/" + postId);
         return ResponseEntity.created(location).build();
+    }
+
+    @DeleteMapping("{postId}")
+    public ResponseEntity<Void> deletePost(@PathVariable Long postId) {
+        postService.deleteById(postId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PatchMapping("{postId}")
+    public ResponseEntity<PostGetResponse> updatePost(@PathVariable Long postId, @RequestBody PostUpdateRequest postUpdateRequest) {
+        postService.editContent(postId, postUpdateRequest);
+        PostGetResponse response = postService.getById(postId);
+        return ResponseEntity.ok(response);
     }
 }
